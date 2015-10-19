@@ -8,9 +8,9 @@
 # hlsearch on (H) or off (h):
 ~h
 # Command Line History (newest to oldest):
+:q
 :wq
 :w
-:q
 :Q
 
 # Search String History (newest to oldest):
@@ -22,39 +22,57 @@
 # Input Line History (newest to oldest):
 
 # Registers:
-""1	LINE	0
-	      digit_i( digit.length()-1, 0 ) = inputs[i]( digit.length()-1, 0 );
+""0	LINE	0
+	    //--------------------------------------------------------------------
+	    // Execute the digitrec sim and receive data
+	    //--------------------------------------------------------------------
+"1	LINE	0
+	      }
 "2	LINE	0
-	      bit64_t digit_i;
+	      num_test_insts++;
+	      
+	      // Check for any difference between k-NN interpreted digit vs. expected digit
+	      if ( interpreted_digit != expecteds[i] ) {
+	        error++;
 "3	LINE	0
+	      //digit_i( digit.length()-1, 0 ) = input_i( digit.length()-1, 0 );
+"4	LINE	0
+	      digit_i( digit.length()-1, 0 ) = inputs[i]( digit.length()-1, 0 );
+"5	LINE	0
+	      bit64_t digit_i;
+"6	LINE	0
 	      // Convert each 49-bit digit to a 64-bit int
 
 # File marks:
-'0  15  16  ~/assignment4_digitrec/zedboard/digitrec.h
-'1  15  16  ~/assignment4_digitrec/amdpool/digitrec.h
-'2  198  0  ~/assignment4_digitrec/amdpool/digitrec.cpp
-'3  95  7  ~/assignment4_digitrec/zedboard/host.cpp
-'4  96  18  ~/assignment4_digitrec/zedboard/host.cpp
-'5  112  6  ~/assignment4_digitrec/zedboard/host.cpp
-'6  135  0  ~/assignment4_digitrec/zedboard/host.cpp
-'7  124  0  ~/zedboard
-'8  1  0  ~/assignment4_digitrec/zedboard/Makefile
-'9  18  37  ~/assignment4_digitrec/zedboard/Makefile
+'0  116  0  ~/assignment4_digitrec/zedboard/host.cpp
+'1  117  26  ~/assignment4_digitrec/zedboard/host.cpp
+'2  111  4  ~/assignment4_digitrec/zedboard/host.cpp
+'3  60  28  ~/assignment4_digitrec/zedboard/host.cpp
+'4  101  4  ~/assignment4_digitrec/zedboard/host.cpp
+'5  15  16  ~/assignment4_digitrec/zedboard/digitrec.h
+'6  15  16  ~/assignment4_digitrec/amdpool/digitrec.h
+'7  198  0  ~/assignment4_digitrec/amdpool/digitrec.cpp
+'8  94  7  ~/assignment4_digitrec/zedboard/host.cpp
+'9  94  18  ~/assignment4_digitrec/zedboard/host.cpp
 
 # Jumplist (newest first):
+-'  116  0  ~/assignment4_digitrec/zedboard/host.cpp
+-'  1  0  ~/assignment4_digitrec/zedboard/host.cpp
+-'  117  26  ~/assignment4_digitrec/zedboard/host.cpp
+-'  111  4  ~/assignment4_digitrec/zedboard/host.cpp
+-'  60  28  ~/assignment4_digitrec/zedboard/host.cpp
+-'  101  4  ~/assignment4_digitrec/zedboard/host.cpp
 -'  15  16  ~/assignment4_digitrec/zedboard/digitrec.h
 -'  1  0  ~/assignment4_digitrec/zedboard/digitrec.h
 -'  15  16  ~/assignment4_digitrec/amdpool/digitrec.h
 -'  1  0  ~/assignment4_digitrec/amdpool/digitrec.h
 -'  198  0  ~/assignment4_digitrec/amdpool/digitrec.cpp
 -'  1  0  ~/assignment4_digitrec/amdpool/digitrec.cpp
--'  95  7  ~/assignment4_digitrec/zedboard/host.cpp
--'  1  0  ~/assignment4_digitrec/zedboard/host.cpp
--'  96  18  ~/assignment4_digitrec/zedboard/host.cpp
--'  112  6  ~/assignment4_digitrec/zedboard/host.cpp
--'  137  0  ~/assignment4_digitrec/zedboard/host.cpp
+-'  94  7  ~/assignment4_digitrec/zedboard/host.cpp
+-'  110  6  ~/assignment4_digitrec/zedboard/host.cpp
+-'  141  0  ~/assignment4_digitrec/zedboard/host.cpp
 -'  70  0  ~/assignment4_digitrec/zedboard/host.cpp
--'  135  0  ~/assignment4_digitrec/zedboard/host.cpp
+-'  139  0  ~/assignment4_digitrec/zedboard/host.cpp
 -'  124  0  ~/zedboard
 -'  1  0  ~/zedboard
 -'  1  0  ~/assignment4_digitrec/zedboard/Makefile
@@ -104,9 +122,9 @@
 -'  18  37  ~/assignment4_digitrec/zedboard/Makefile
 -'  1  0  ~/assignment4_digitrec/zedboard/Makefile
 -'  18  37  ~/assignment4_digitrec/zedboard/Makefile
--'  94  28  ~/assignment4_digitrec/zedboard/host.cpp
--'  110  6  ~/assignment4_digitrec/zedboard/host.cpp
--'  133  0  ~/assignment4_digitrec/zedboard/host.cpp
+-'  93  28  ~/assignment4_digitrec/zedboard/host.cpp
+-'  108  6  ~/assignment4_digitrec/zedboard/host.cpp
+-'  137  0  ~/assignment4_digitrec/zedboard/host.cpp
 -'  124  0  ~/zedboard
 -'  1  0  ~/zedboard
 -'  1  0  ~/assignment4_digitrec/zedboard/Makefile
@@ -136,13 +154,41 @@
 -'  1  0  ~/assignment4_digitrec/zedboard/Makefile
 -'  18  37  ~/assignment4_digitrec/zedboard/Makefile
 -'  1  0  ~/assignment4_digitrec/zedboard/Makefile
--'  18  37  ~/assignment4_digitrec/zedboard/Makefile
--'  124  0  ~/zedboard
--'  1  0  ~/zedboard
--'  1  0  ~/assignment4_digitrec/zedboard/Makefile
--'  18  37  ~/assignment4_digitrec/zedboard/Makefile
 
 # History of marks within files (newest to oldest):
+
+> ~/assignment4_digitrec/zedboard/host.cpp
+	"	116	0
+	^	117	27
+	.	117	26
+	+	94	0
+	+	92	34
+	+	94	29
+	+	92	40
+	+	94	27
+	+	94	5
+	+	92	56
+	+	93	31
+	+	94	45
+	+	94	19
+	+	94	7
+	+	94	26
+	+	93	0
+	+	94	0
+	+	112	0
+	+	120	0
+	+	119	32
+	+	125	5
+	+	126	4
+	+	125	6
+	+	123	29
+	+	60	29
+	+	109	81
+	+	110	49
+	+	60	28
+	+	112	0
+	+	116	0
+	+	117	26
 
 > ~/assignment4_digitrec/zedboard/digitrec.h
 	"	15	16
@@ -158,22 +204,6 @@
 
 > ~/assignment4_digitrec/amdpool/digitrec.cpp
 	"	198	0
-
-> ~/assignment4_digitrec/zedboard/host.cpp
-	"	95	7
-	^	95	8
-	.	95	7
-	+	96	0
-	+	93	0
-	+	96	29
-	+	93	6
-	+	96	27
-	+	95	5
-	+	93	22
-	+	94	31
-	+	95	45
-	+	96	19
-	+	95	7
 
 > ~/zedboard
 	"	124	0

@@ -57,7 +57,7 @@ int main(int argc, char** argv)
   int nbytes;
   int error = 0;
   int num_test_insts = 0;
-  bit32_t interpreted_digit;
+  bit32_t interpreted_digit[N];
 
 
   if ( myfile.is_open() ) {
@@ -90,10 +90,8 @@ int main(int argc, char** argv)
     // Send all inputs to the module
     //--------------------------------------------------------------------
     for (int i = 0; i < N; ++i ) {
-      bit64_t digit_i;
       digit input_i = inputs[i];
-      //digit_i( digit.length()-1, 0 ) = input_i( digit.length()-1, 0 );
-      int64_t input = digit_i;
+      int64_t input = input_i;
 
       // send bytes through the write channel
       // and assert that the right number of bytes were sent
@@ -108,19 +106,25 @@ int main(int argc, char** argv)
     for (int i = 0; i < N; ++i ) {
       // Receive bytes through the read channel
       // and assert that the right number of bytes were received 
-      nbytes = read(fdr, (void*)&interpreted_digit, sizeof(interpreted_digit));
-      assert(nbytes == sizeof(interpreted_digit));
+      nbytes = read(fdr, (void*)&interpreted_digit[i], sizeof(interpreted_digit[i]));
+      assert(nbytes == sizeof(interpreted_digit[i]));
       
+    }
+
+    timer.stop();
+   
+    //--------------------------------------------------------------------
+    // Calculate error rate
+    //--------------------------------------------------------------------
+    for (int i = 0; i < N; ++i ){ 
       num_test_insts++;
       
       // Check for any difference between k-NN interpreted digit vs. expected digit
-      if ( interpreted_digit != expecteds[i] ) {
+      if ( interpreted_digit[i] != expecteds[i] ) {
         error++;
       }
     }
 
-    timer.stop();
-    
     // Report overall error out of all testing instances
     std::cout << "Number of test instances = " << num_test_insts << std::endl;
     std::cout << "Overall Error Rate = " << std::setprecision(3)

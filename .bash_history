@@ -70,3 +70,43 @@ make fpga
 cd ..
 ll
 logout
+ll
+cd assignment4_digitrec/
+ll
+cd ..
+cd assignment4_digitrec/amdpool/
+cp ../../amdpool/digitrec.cpp .
+ll
+vi digitrec.cpp
+vi digitrec.h
+cd ..
+cd zedboard/
+make
+:q
+cp ../amdpool/digitrec.cpp .
+vi digitrec.h
+make
+cd ..
+ll
+rm -r amdpool
+ll
+git init
+git add .
+git commit -m "Initialize zedboard 5 for hw4"
+git config --global user.email "mq58@cornell.edu"
+git config user.name "orangeqi"
+git commit -m "Initialize zedboard 5 for hw4"
+git remote add origin
+git remote add origin https://github.com/orangeqi/zedboard.git
+git remote -v
+git push origin master
+git remote add origin https://github.com/orangeqi/zedboard
+git push origin master
+git remote -v
+git remote rename origin destination
+git remote -v
+git push origin master
+git remote -v
+git remote rename destination origin
+git remote -v
+git push origin master
